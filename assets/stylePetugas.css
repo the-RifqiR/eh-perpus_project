@@ -1,0 +1,1218 @@
+/* ==========================================================================
+   START: VARIABEL WARNA UTAMA (CSS Variables)
+   Digunakan di: Semua file (dashboard.php, akun/list.php, buku/list.php, dll)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+:root {
+    /* Warna Utama */
+    --primary-color: #4F6F52;
+    /* Hijau Sage / Olive Tua (Navbar, Tombol Utama) */
+    --primary-rgb: 79, 111, 82;
+    /* Nilai RGB untuk --primary-color */
+    --secondary-color: #739072;
+    /* Sage Muda (Harmonis dengan Primary) */
+    --accent-color: #D4AF37;
+    /* Emas Muda / Gold Soft (Tombol Penting, Badge, Hover) */
+
+    /* Warna Latar & Netral */
+    --light-color: #F8F9F5;
+    /* Putih Pucat / Broken White (Latar Dashboard/Konten) */
+    --dark-color: #37423D;
+    /* Hijau Tua Keabuan (Untuk kontras gelap) */
+    --dark-rgb: 55, 66, 61;
+    /* Nilai RGB untuk --dark-color */
+
+    /* Warna Status & Pemberitahuan */
+    --success-color: #A3B18A;
+    /* Hijau Mint (Status "tersedia", sukses) */
+    --warning-color: #D4AF37;
+    /* Emas Muda (Sama dengan aksen untuk badge notifikasi) */
+    --danger-color: #C94C4C;
+    /* Merah Tua Soft (Peringatan/Denda) */
+    --info-color: #6082B6;
+    /* Biru Redup (Untuk pesan informasi) */
+
+    /* Warna Teks */
+    --text-color: #2D2D2D;
+    /* Abu Tua / Graphite (Teks Utama) */
+    --text-muted: #7A7A7A;
+    /* Abu Terang (Teks Sekunder) */
+
+    /* Variabel Bootstrap */
+    --bs-primary: var(--primary-color);
+    --bs-secondary: var(--success-color);
+    /* Menggunakan Hijau Mint untuk secondary button */
+    --bs-success: var(--success-color);
+    --bs-info: var(--info-color);
+    --bs-warning: var(--warning-color);
+    --bs-danger: var(--danger-color);
+    --bs-light: var(--light-color);
+    --bs-dark: var(--text-color);
+    /* Menggunakan warna teks utama untuk bs-dark */
+    --bs-gold: var(--accent-color);
+}
+
+/* ==========================================================================
+      END: VARIABEL WARNA UTAMA
+      ========================================================================== */
+
+/* ==========================================================================
+   START: BASE STYLES
+   Digunakan di: Semua file (dashboard.php, akun/list.php, buku/list.php, dll)
+   ========================================================================== */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Merriweather', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none;
+    /* Untuk IE/Edge */
+    scrollbar-width: none;
+    /* Untuk Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Untuk Chrome, Safari */
+}
+
+/* ==========================================================================
+   END: BASE STYLES
+   ========================================================================== */
+
+/* ==========================================================================
+   START: NAVBAR STYLES
+   Digunakan di: 
+   - dashboard.php
+   - akun/list.php
+   - buku/list.php
+   - peminjaman/list.php
+   - laporan/index.php
+   ========================================================================== */
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 65px;
+    padding: 0.5rem 0;
+}
+
+/* Navbar Brand & Links */
+.navbar .navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4rem;
+    color: var(--bs-light) !important;
+    margin-right: 2.5rem;
+}
+
+.navbar .nav-link,
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus {
+    color: var(--bs-light) !important;
+}
+
+.navbar .nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Navbar Hover Effects */
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--bs-gold);
+    transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+/* Navbar Container & Layout */
+.navbar .container-fluid {
+    padding: 0 2.5rem !important;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.collapse.navbar-collapse {
+    display: flex !important;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Navbar Icons */
+.navbar .bi {
+    color: var(--bs-light) !important;
+}
+
+/* Navbar Dropdown */
+.navbar .dropdown-menu {
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.navbar .dropdown-item {
+    color: var(--bs-light) !important;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-color) !important;
+    transform: translateX(5px);
+}
+
+.navbar .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+}
+
+/* Navbar Mobile Styles */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 320px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        padding: 1.5rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1030;
+        overflow-y: auto;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .navbar .container-fluid {
+        padding: 0 1rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        width: 280px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ==========================================================================
+   END: NAVBAR STYLES
+   ========================================================================== */
+
+
+/* ==========================================================================
+   START: FORM PEMINJAMAN STYLES
+   Digunakan di: petugas/aktivitas/peminjaman/create.php
+   ========================================================================== */
+.edit-akun-page {
+    background-color: var(--primary-color) !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.edit-card {
+    background: var(--light-color);
+    border: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+}
+
+.edit-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.edit-header h2 {
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.form-floating {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.form-floating .form-control,
+.form-floating .form-select {
+    height: 3.5rem;
+    padding: 1.25rem 0.75rem 0.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.form-floating .form-control:focus,
+.form-floating .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.15);
+    background-color: white;
+    transform: translateY(-2px);
+}
+
+.form-floating label {
+    background: none !important;
+    padding: 1rem 0.75rem 0.25rem 0.75rem;
+    margin: 0;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+    color: var(--primary-color);
+    height: auto;
+}
+
+.buku-checkbox-group .form-check {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    /* atau var(--light-color) */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+.buku-checkbox-group {
+    background: var(--light-color);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+.buku-checkbox-group .form-check:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.form-check {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-check:last-child {
+    border-bottom: none;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.25rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-label {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding-left: 0.5rem;
+}
+
+.btn-update {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+.btn-update:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+}
+
+.btn-outline-secondary {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--text-muted);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .edit-akun-page {
+        padding: 1rem;
+    }
+
+    .edit-card {
+        padding: 1.25rem;
+    }
+
+    .edit-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .form-floating .form-control,
+    .form-floating .form-select {
+        height: 3.25rem;
+        font-size: 0.95rem;
+    }
+
+    .form-floating label {
+        font-size: 0.9rem;
+    }
+
+    .btn-update,
+    .btn-outline-secondary {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   START: LIST PEMINJAMAN STYLES
+   Digunakan di: petugas/aktivitas/peminjaman/list.php
+   ========================================================================== */
+.peminjaman-list {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 2rem auto;
+}
+
+.peminjaman-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.peminjaman-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.peminjaman-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.peminjaman-table th {
+    background-color: var(--light-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.peminjaman-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
+}
+
+.peminjaman-table tr:last-child td {
+    border-bottom: none;
+}
+
+.peminjaman-table tr:hover {
+    background-color: rgba(var(--primary-rgb), 0.02);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.status-badge.dipinjam {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.status-badge.dikembalikan {
+    background-color: var(--success-color);
+    color: var(--dark-color);
+}
+
+.status-badge.terlambat {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-action i {
+    font-size: 1rem;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+/* Edit Button */
+.btn-edit {
+    background-color: var(--info-color);
+}
+
+.btn-edit:hover {
+    background-color: #4a6fa5;
+}
+
+/* Delete Button */
+.btn-delete {
+    background-color: var(--danger-color);
+}
+
+.btn-delete:hover {
+    background-color: #b03e3e;
+}
+
+/* Return Button */
+.btn-return {
+    background-color: var(--success-color);
+}
+
+.btn-return:hover {
+    background-color: #8a9a6e;
+}
+
+/* Tooltip Customization */
+.tooltip {
+    font-size: 0.875rem;
+}
+
+.tooltip-inner {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Animation */
+@keyframes buttonPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-action:active {
+    animation: buttonPop 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .action-buttons {
+        justify-content: center;
+    }
+
+    .btn-action {
+        width: 32px;
+        height: 32px;
+    }
+
+    .btn-action i {
+        font-size: 0.875rem;
+    }
+}
+
+/* ==========================================================================
+   START: PANTau STYLES
+   Digunakan di: petugas/aktivitas/pantau/
+   ========================================================================== */
+.pantau-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 2rem auto;
+}
+
+.pantau-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.pantau-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.pantau-card {
+    background: var(--light-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.pantau-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.pantau-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pantau-info i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.pantau-details {
+    color: var(--text-color);
+}
+
+.pantau-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.pantau-details p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.pantau-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .pantau-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .pantau-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pantau-title {
+        font-size: 1.5rem;
+    }
+
+    .pantau-card {
+        padding: 1rem;
+    }
+
+    .pantau-info i {
+        font-size: 1.25rem;
+    }
+
+    .pantau-details h3 {
+        font-size: 1rem;
+    }
+
+    .pantau-details p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ==========================================================================
+   START: SIDEBAR STYLES
+   Digunakan di: Semua halaman petugas
+   ========================================================================== */
+.bg-sidebar {
+    background-color: var(--light-color);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    height: calc(100vh - 65px);
+    position: sticky;
+    top: 65px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: sidebarSlideIn 0.5s ease-out forwards;
+    transform: translateX(-100%);
+}
+
+@keyframes sidebarSlideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.bg-sidebar .nav-pills {
+    padding: 1rem 0.5rem;
+}
+
+.bg-sidebar .nav-pills .nav-link {
+    color: var(--text-muted);
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: navLinkFadeIn 0.3s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+@keyframes navLinkFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bg-sidebar .nav-pills .nav-link .bi {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.bg-sidebar .nav-pills .nav-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(var(--primary-rgb), 0.05);
+    transform: translateX(5px);
+}
+
+.bg-sidebar .nav-pills .nav-link:hover .bi {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+.bg-sidebar .nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--bs-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-sidebar .nav-pills .nav-link.active .bi {
+    color: var(--bs-light);
+}
+
+/* Responsive adjustments untuk sidebar */
+@media (max-width: 991px) {
+    .bg-sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1030;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bg-sidebar.show {
+        left: 0;
+        animation: mobileSidebarSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileSidebarSlideIn {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    .bg-sidebar.hide {
+        animation: mobileSidebarSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileSidebarSlideOut {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .bg-sidebar {
+        width: 260px;
+    }
+}
+
+/* ==========================================================================
+   START: LIST PEMINJAMAN STYLES
+   Digunakan di: petugas/aktivitas/peminjaman/list.php
+   ========================================================================== */
+
+/* Flip Card Container Styles */
+.flip-container {
+    perspective: 1000px;
+    min-height: 400px;
+}
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+#pengembalianCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+}
+
+#peminjamanCard {
+    backface-visibility: hidden;
+}
+
+/* Toggle Button Styles */
+#toggleView {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#toggleView:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#toggleView i {
+    transition: transform 0.3s ease;
+}
+
+#toggleView:hover i {
+    transform: rotate(180deg);
+}
+
+/* Page Header Styles */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Table Styles */
+.table-responsive {
+    margin-top: 1rem;
+}
+
+.table th {
+    background-color: var(--light-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
+    vertical-align: middle;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background-color: rgba(var(--primary-rgb), 0.02);
+}
+
+/* Status Badge Styles */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.badge-status.dipinjam {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.badge-status.dikembalikan {
+    background-color: var(--success-color);
+    color: var(--dark-color);
+}
+
+.badge-status.terlambat {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Action Buttons Styles */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-action i {
+    font-size: 1rem;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+/* Edit Button */
+.btn-edit {
+    background-color: var(--info-color);
+}
+
+.btn-edit:hover {
+    background-color: #4a6fa5;
+}
+
+/* Delete Button */
+.btn-delete {
+    background-color: var(--danger-color);
+}
+
+.btn-delete:hover {
+    background-color: #b03e3e;
+}
+
+/* Return Button */
+.btn-return {
+    background-color: var(--success-color);
+}
+
+.btn-return:hover {
+    background-color: #8a9a6e;
+}
+
+/* Tooltip Customization */
+.tooltip {
+    font-size: 0.875rem;
+}
+
+.tooltip-inner {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Animation */
+@keyframes buttonPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-action:active {
+    animation: buttonPop 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .page-header .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-add-account {
+        width: 100%;
+    }
+
+    .action-buttons {
+        justify-content: center;
+    }
+
+    .btn-action {
+        width: 32px;
+        height: 32px;
+    }
+
+    .btn-action i {
+        font-size: 0.875rem;
+    }
+}
+
+/* ==========================================================================
+   END: LIST PEMINJAMAN STYLES
+   ========================================================================== */
+
+/* ==========================================================================
+   START: REQUEST CARD STYLES
+   Digunakan di: petugas/aktivitas/peminjaman/daftar_request_peminjaman.php
+   ========================================================================== */
+.request-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+}
+
+.request-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.request-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.book-title {
+    color: var(--text-color);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.request-body {
+    padding: 1.25rem;
+}
+
+.request-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-muted);
+}
+
+.request-info i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.request-footer {
+    padding: 1.25rem;
+    border-top: 1px solid #e9ecef;
+    background: var(--light-color);
+    border-radius: 0 0 10px 10px;
+}
+
+.btn-action {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .request-header {
+        padding: 1rem;
+    }
+
+    .request-body {
+        padding: 1rem;
+    }
+
+    .request-footer {
+        padding: 1rem;
+    }
+
+    .request-info {
+        margin-bottom: 0.5rem;
+    }
+
+    .book-title {
+        font-size: 1rem;
+    }
+}

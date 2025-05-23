@@ -1,0 +1,582 @@
+/* styleIndex.css */
+
+/* ==========================================
+   Root Variables and Base Styles
+========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+:root {
+    --primary-color: #4F6F52;    /* Hijau Sage / Olive Tua (Navbar, Tombol Utama) */
+    --primary-rgb: 79, 111, 82;  /* Nilai RGB untuk --primary-color */
+    --secondary-color: #739072;  /* Sage Muda (Harmonis dengan Primary) */
+    --accent-color: #D4AF37;     /* Emas Muda / Gold Soft (Tombol Penting, Badge, Hover) */
+    --light-color: #F8F9F5;      /* Putih Pucat / Broken White (Latar Dashboard/Konten) */
+    --dark-color: #37423D;       /* Hijau Tua Keabuan (Untuk kontras gelap) */
+    --success-color: #A3B18A;    /* Hijau Mint (Status "tersedia", sukses) */
+    --warning-color: #D4AF37;    /* Emas Muda (Sama dengan aksen untuk badge notifikasi) */
+    --danger-color: #C94C4C;     /* Merah Tua Soft (Peringatan/Denda) */
+    --info-color: #6082B6;       /* Biru Redup (Untuk pesan informasi) */
+    --text-color: #2D2D2D;       /* Abu Tua / Graphite (Teks Utama) */
+    --text-muted: #7A7A7A;       /* Abu Terang (Teks Sekunder) */
+    
+    /* Variabel Bootstrap */
+    --bs-primary: var(--primary-color);
+    --bs-secondary: var(--success-color);
+    --bs-success: var(--success-color);
+    --bs-info: var(--info-color);
+    --bs-warning: var(--warning-color);
+    --bs-danger: var(--danger-color);
+    --bs-light: var(--light-color);
+    --bs-dark: var(--text-color);
+    --bs-gold: var(--accent-color);
+}
+
+/* ==========================================
+   Base Styles
+========================================== */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Merriweather';
+    background-color: var(--light-color);
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('contoh.png') center center/cover no-repeat;
+    filter: blur(5px);
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ==========================================
+   NAVBAR
+========================================== */
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.navbar .container-fluid {
+    padding: 0 2.5rem !important; /* Penyesuaian padding jika diperlukan */
+    display: flex;
+    align-items: center;
+    gap: 2.5rem; /* Jarak antar elemen utama navbar */
+}
+
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4rem;
+    color: var(--light-color);
+    margin-right: 2.5rem;
+}
+
+.navbar-brand:hover {
+    color: var(--bs-gold); /* Warna hover untuk brand */
+}
+
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.5); /* Warna border toggler */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Warna ikon toggler */
+}
+
+.collapse.navbar-collapse {
+    display: flex !important; /* Pastikan ini ada untuk layout yang benar */
+    align-items: center;
+    gap: 2.5rem; /* Jarak antar grup item di collapse (search, nav-items) */
+}
+
+/* ==========================================
+   NAV ITEMS (Link, Dropdown)
+========================================== */
+
+.navbar .nav-link {
+    color: var(--light-color);
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.navbar .nav-link::after { /* Efek garis bawah saat hover/active */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--bs-gold);
+    transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active, /* Jika Anda menggunakan class .active untuk link aktif */
+.navbar .nav-item.show > .nav-link { /* Untuk dropdown yang terbuka */
+    color: var(--bs-gold);
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after,
+.navbar .nav-item.show > .nav-link::after {
+    width: 100%;
+}
+
+.dropdown-menu {
+    background-color: var(--primary-color); /* Latar dropdown */
+    border: 1px solid rgba(255,255,255,0.15); /* Border tipis untuk dropdown */
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+.dropdown-item {
+    color: var(--light-color);
+    padding: 0.5rem 1rem; /* Padding item dropdown */
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: var(--bs-gold);
+    background-color: rgba(255,255,255,0.1); /* Latar hover item dropdown */
+}
+
+/* Penyesuaian untuk elemen kanan (Aktivitas, Keranjang, Akun) agar rapi */
+.d-flex.align-items-center.ms-auto.gap-2 {
+    gap: 2rem !important; /* Sesuaikan jarak antar grup item kanan (dropdown, tombol) */
+}
+
+
+/* ==========================================
+   SEARCH BAR DI NAVBAR
+========================================== */
+.navbar-search {
+    position: relative;
+    margin: 0 2.5rem !important; /* Margin search bar */
+    flex-grow: 1; /* Agar search bar bisa mengisi ruang */
+    max-width: 400px !important; /* Batas lebar maksimum search bar */
+    width: 100%;
+}
+
+.navbar-search .search-input {
+    width: 100%;
+    padding: 0.4rem 1rem 0.4rem 2.2rem !important; /* Padding input, sisakan ruang untuk ikon */
+    border: none;
+    border-radius: 999px !important; /* Input jadi rounded penuh */
+    background: rgba(255,255,255,0.13); /* Latar semi-transparan untuk input */
+    color: var(--text-color); /* Warna teks input */
+    font-size: 0.9rem;
+    height: 38px; /* Tinggi input */
+    transition: background 0.3s;
+}
+
+.navbar-search .search-input::placeholder {
+    color: rgba(255,255,255,0.7); /* Warna placeholder */
+    font-size: 0.9rem;
+}
+
+.navbar-search .search-input:focus {
+    background: rgba(255,255,255,0.18); /* Latar saat input fokus */
+    outline: none;
+    box-shadow: 0 0 0 2px var(--bs-gold); /* Efek glow saat fokus */
+}
+
+.navbar-search .search-icon {
+    position: absolute;
+    left: 14px !important; /* Posisi ikon search di dalam input */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--bs-gold); /* Warna ikon search */
+    font-size: 1rem;
+    height: 38px; /* Sejajarkan tinggi ikon dengan input */
+    width: 28px; /* Lebar area ikon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Agar ikon tidak bisa diklik/fokus */
+}
+
+/* ==========================================
+   TOMBOL (Contoh: Keranjang)
+========================================== */
+.navbar .btn-outline-light { /* Spesifik untuk tombol di navbar */
+    color: var(--light-color);
+    border-color: var(--light-color);
+    padding: 0.4rem 1rem; /* Sesuaikan padding tombol */
+    font-size: 0.9rem; /* Sesuaikan ukuran font tombol */
+}
+
+.navbar .btn-outline-light:hover {
+    color: var(--primary-color); /* Teks tombol saat hover */
+    background-color: var(--light-color); /* Latar tombol saat hover */
+    border-color: var(--light-color);
+}
+
+.navbar .btn-outline-light i {
+    margin-right: 0.5rem; /* Jarak ikon dengan teks di tombol */
+}
+
+
+/* Alert Customization */
+
+
+/* ==========================================
+   Main Content Styles
+========================================== */
+.container {
+    max-width: 1140px;
+    color: var(--text-color);
+}
+
+/* Highlight Section */
+.highlight-custom {
+    background: white;
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+}
+
+.highlight-custom h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.highlight-custom .lead {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+}
+
+.highlight-custom .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.highlight-custom .btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Popular Books Section */
+.popular-books {
+    margin-bottom: 40px;
+}
+
+.popular-books h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.popular-books .card {
+    background-color: white;
+    border: none;
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.popular-books .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.popular-books .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+}
+
+.popular-books .card-title {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.popular-books .card-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.popular-books .text-muted {
+    color: var(--text-muted) !important;
+}
+
+.popular-books .btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.popular-books .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.popular-books .btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.popular-books .btn-secondary {
+    background-color: var(--text-muted);
+    border: none;
+}
+
+.popular-books .btn-secondary:hover {
+    background-color: var(--dark-color);
+}
+
+/* Pemberitahuan Section */
+.pemberitahuan-custom {
+    background-color: var(--info-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   Footer Styles
+========================================== */
+.footer-custom {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+    color: var(--light-color);
+    padding: 3rem 0 1rem;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.footer-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.3), transparent);
+}
+
+.footer-custom::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--bs-primary), var(--bs-gold), var(--bs-primary));
+    opacity: 0.5;
+}
+
+.footer-custom h4 {
+    color: var(--light-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.footer-custom h4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--bs-gold);
+}
+
+.footer-custom p {
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+/* ==========================================
+   Responsive Styles
+========================================== */
+@media (max-width: 768px) {
+    .highlight-custom {
+        padding: 2rem;
+    }
+
+    .highlight-custom h1 {
+        font-size: 2rem;
+    }
+
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+
+    .popular-books .card-img-top {
+        height: 160px;
+    }
+
+    .footer-custom h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-custom p {
+        font-size: 0.85rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar-search {
+        max-width: 100% !important;
+        margin: 0.75rem 0 !important;
+    }
+}
+
+/* ==========================================
+   SCROLLBAR STYLING
+========================================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-secondary);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-dark);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--bs-secondary) var(--bs-light);
+}
+
+/* ==========================================
+   Form Controls
+========================================== */
+
+
+/* ==========================================
+   Dropdown Menu
+========================================== */
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 200px;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-light);
+}

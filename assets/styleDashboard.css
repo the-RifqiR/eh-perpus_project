@@ -1,0 +1,2192 @@
+/* ==========================================================================
+   VARIABEL WARNA UTAMA (CSS Variables)
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+:root {
+    /* Warna Utama */
+    --primary-color: #4F6F52;
+    /* Hijau Sage / Olive Tua (Navbar, Tombol Utama) */
+    --primary-rgb: 79, 111, 82;
+    /* Nilai RGB untuk --primary-color */
+    --secondary-color: #739072;
+    /* Sage Muda (Harmonis dengan Primary) */
+    --accent-color: #D4AF37;
+    /* Emas Muda / Gold Soft (Tombol Penting, Badge, Hover) */
+
+    /* Warna Latar & Netral */
+    --light-color: #F8F9F5;
+    /* Putih Pucat / Broken White (Latar Dashboard/Konten) */
+    --dark-color: #37423D;
+    /* Hijau Tua Keabuan (Untuk kontras gelap) */
+    --dark-rgb: 55, 66, 61;
+    /* Nilai RGB untuk --dark-color */
+
+    /* Warna Status & Pemberitahuan */
+    --success-color: #A3B18A;
+    /* Hijau Mint (Status "tersedia", sukses) */
+    --warning-color: #D4AF37;
+    /* Emas Muda (Sama dengan aksen untuk badge notifikasi) */
+    --danger-color: #C94C4C;
+    /* Merah Tua Soft (Peringatan/Denda) */
+    --info-color: #6082B6;
+    /* Biru Redup (Untuk pesan informasi) */
+
+    /* Warna Teks */
+    --text-color: #2D2D2D;
+    /* Abu Tua / Graphite (Teks Utama) */
+    --text-muted: #7A7A7A;
+    /* Abu Terang (Teks Sekunder) */
+
+    /* Variabel Bootstrap Disesuaikan */
+    --bs-primary: var(--primary-color);
+    --bs-secondary: var(--success-color);
+    /* Menggunakan Hijau Mint untuk secondary button */
+    --bs-success: var(--success-color);
+    --bs-info: var(--info-color);
+    --bs-warning: var(--warning-color);
+    --bs-danger: var(--danger-color);
+    --bs-light: var(--light-color);
+    --bs-dark: var(--text-color);
+    /* Menggunakan warna teks utama untuk bs-dark */
+    --bs-gold: var(--accent-color);
+}
+
+/* ==========================================================================
+   RESET DAN DASAR UNTUK <html> & <body>
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Merriweather', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-color);
+    /* Latar belakang utama konten */
+    color: var(--text-color);
+    /* Warna teks default untuk body */
+    -ms-overflow-style: none;
+    /* Untuk IE/Edge */
+    scrollbar-width: none;
+    /* Untuk Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Untuk Chrome, Safari */
+}
+
+/* ==========================================================================
+   DASHBOARD STYLES
+   Digunakan di: admin/dashboard.php, admin/akun/list.php, admin/buku/list.php
+   ========================================================================== */
+
+/* ==========================================================================
+   NAVBAR STYLES
+   Digunakan di: Semua halaman admin (dashboard, akun, buku, dll)
+   ========================================================================== */
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 65px;
+    padding: 0.5rem 0;
+}
+
+/* Penyesuaian Warna Teks Navbar agar Kontras dengan Latar Belakang Gelap */
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus {
+    color: var(--bs-light) !important;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: var(--bs-light) !important;
+    opacity: 0.9;
+}
+
+.navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248, 249, 245, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Warna ikon di navbar */
+.navbar .bi {
+    color: var(--bs-light) !important;
+}
+
+/* Penyesuaian dropdown di navbar */
+.navbar .dropdown-menu {
+    background-color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+}
+
+.navbar .dropdown-item {
+    color: var(--bs-light) !important;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navbar .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.navbar .dropdown-item i {
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar .dropdown-item:hover i {
+    transform: scale(1.1);
+    color: var(--accent-color) !important;
+}
+
+.navbar .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+}
+
+.navbar .dropdown-item.text-danger {
+    color: #ff6b6b !important;
+}
+
+.navbar .dropdown-item.text-danger:hover {
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.navbar .container-fluid {
+    padding: 0 2.5rem !important;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4rem;
+    color: var(--light-color);
+    margin-right: 2.5rem;
+}
+
+.navbar .nav-link {
+    color: var(--light-color);
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--bs-gold);
+    transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--bs-gold);
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+.collapse.navbar-collapse {
+    display: flex !important;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.d-flex.align-items-center.ms-auto.gap-2 {
+    gap: 2rem !important;
+}
+
+/* ==========================================
+   SEARCH BAR DI NAVBAR
+========================================== */
+.navbar-search {
+    position: relative;
+    margin: 0 2.5rem !important;
+    flex-grow: 1;
+    max-width: 400px !important;
+    width: 100%;
+}
+
+.navbar-search .search-input {
+    width: 100%;
+    padding: 0.4rem 1rem 0.4rem 2.2rem !important;
+    border: none;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.13);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    height: 38px;
+    transition: background 0.3s;
+}
+
+.navbar-search .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.navbar-search .search-input:focus {
+    background: rgba(255, 255, 255, 0.18);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--bs-gold);
+}
+
+.navbar-search .search-icon {
+    position: absolute;
+    left: 14px !important;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--bs-gold);
+    font-size: 1rem;
+    height: 38px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   SIDEBAR STYLES (LENGKAP)
+   Digunakan di: Semua halaman admin (dashboard, akun, buku, dll)
+   ========================================================================== */
+.bg-sidebar {
+    background-color: var(--light-color);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: calc(100vh - 65px);
+    position: sticky;
+    top: 65px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: sidebarSlideIn 0.5s ease-out forwards;
+    transform: translateX(-100%);
+}
+
+@keyframes sidebarSlideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.bg-sidebar .nav-pills {
+    padding: 1rem 0.5rem;
+}
+
+.bg-sidebar .nav-pills .nav-link {
+    color: var(--text-muted);
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: navLinkFadeIn 0.3s ease-out forwards;
+    animation-delay: calc(var(--link-index, 0) * 0.1s);
+}
+
+@keyframes navLinkFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bg-sidebar .nav-pills .nav-link .bi {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.bg-sidebar .nav-pills .nav-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(var(--primary-rgb), 0.05);
+    transform: translateX(5px);
+}
+
+.bg-sidebar .nav-pills .nav-link:hover .bi {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+.bg-sidebar .nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--bs-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-sidebar .nav-pills .nav-link.active .bi {
+    color: var(--bs-light);
+}
+
+/* Mobile Sidebar Animation */
+@media (max-width: 991px) {
+    .bg-sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1030;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: none;
+    }
+
+    .bg-sidebar.show {
+        left: 0;
+        animation: mobileSidebarSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileSidebarSlideIn {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .bg-sidebar.hide {
+        animation: mobileSidebarSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileSidebarSlideOut {
+        0% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+}
+
+/* ==========================================================================
+   STAT CARD STYLES
+   Digunakan di: dashboard.php
+   ========================================================================== */
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-card .card-body {
+    padding: 1.5rem;
+}
+
+.stat-card .card-title {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card h2 {
+    color: var(--text-color);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.stat-card .bg-opacity-10 {
+    background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.stat-card .text-primary {
+    color: var(--primary-color) !important;
+}
+
+.stat-card .text-danger {
+    color: var(--danger-color) !important;
+}
+
+.stat-card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ==========================================================================
+   RECENT ACTIVITY CARD STYLES
+   Digunakan di: dashboard.php
+   ========================================================================== */
+.recent-activity-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-activity-header .card-title {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.btn-gold {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-gold:hover {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+}
+
+.btn-gold i {
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   TABLE STYLES UNTUK RECENT ACTIVITY
+   ========================================================================== */
+.table-sm {
+    font-size: 0.9rem;
+}
+
+.table-sm th {
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1rem;
+}
+
+.table-sm td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table-sm tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-sm tbody tr:hover {
+    background-color: rgba(var(--primary-rgb), 0.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .bg-sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1030;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: none;
+    }
+
+    .bg-sidebar.show {
+        left: 0;
+        animation: mobileSidebarSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileSidebarSlideIn {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .bg-sidebar.hide {
+        animation: mobileSidebarSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileSidebarSlideOut {
+        0% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .stat-card .card-body {
+        padding: 1.25rem;
+    }
+
+    .stat-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .recent-activity-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .recent-activity-header .card-title {
+        font-size: 1rem;
+    }
+
+    .btn-gold {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   KONTEN UTAMA
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+.main-content {
+    margin-left: 280px;
+    /* Sesuaikan dengan lebar sidebar */
+    padding: 2rem;
+    min-height: 100vh;
+    background-color: var(--light-color);
+    transition: all 0.3s ease;
+}
+
+/* Container untuk konten */
+.content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Card untuk konten */
+.content-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Header untuk konten */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.content-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0;
+}   
+
+.page-description {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+/* Responsive untuk sidebar dan konten */
+@media (max-width: 991px) {
+    .sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .content-container {
+        padding: 0;
+    }
+}
+
+/* Tambahan untuk mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 260px;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .content-title {
+        font-size: 1.25rem;
+    }
+
+    .content-card {
+        padding: 1rem;
+    }
+}
+
+/* ==========================================================================
+   DASHBOARD CARDS & STATISTICS
+   Digunakan di: admin/dashboard.php
+   ========================================================================== */
+.card-stats {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-stats:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-stats .card-body {
+    padding: 1.5rem;
+}
+
+.card-stats .card-title {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.card-stats h2 {
+    color: var(--text-color);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card-stats .bg-opacity-10 {
+    background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.card-stats .text-primary {
+    color: var(--primary-color) !important;
+}
+
+.card-stats .text-danger {
+    color: var(--danger-color) !important;
+}
+
+/* ==========================================================================
+   TABLE STYLES
+   Digunakan di: admin/akun/list.php, admin/buku/list.php
+   ========================================================================== */
+.table-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1rem;
+}
+
+.table td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(var(--primary-rgb), 0.02);
+}
+
+/* ==========================================================================
+   FORM STYLES
+   Digunakan di: admin/akun/create.php, admin/akun/edit.php, admin/buku/create.php, admin/buku/edit.php
+   ========================================================================== */
+.form-container {
+    /* Placeholder untuk form styles */
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   BUTTON STYLES
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+.btn-action {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin: 0 0.25rem;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   MODAL STYLES
+   Digunakan di: Semua halaman admin yang menggunakan modal
+   ========================================================================== */
+.modal-custom {
+    /* Placeholder untuk modal styles */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+.text-primary {
+    /* Placeholder untuk utility classes */
+    color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* Placeholder untuk responsive styles */
+    .container {
+        padding: 1rem;
+    }
+
+    .table-responsive {
+        margin: 0 -1rem;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE: TABLET & HP
+   ========================================================================== */
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+    .navbar .container-fluid {
+        padding: 0 1rem !important;
+        gap: 1rem;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 320px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        padding: 1.5rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1030;
+        overflow-y: auto;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    /* Mobile Profile Section */
+    .mobile-profile-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .profile-header {
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .profile-header:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .profile-header .profile-circle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-header .profile-circle i {
+        font-size: 1.25rem;
+    }
+
+    .profile-info h6 {
+        color: var(--bs-light);
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .profile-info small {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .profile-dropdown {
+        display: none;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .profile-header.active+.profile-dropdown {
+        display: block;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .profile-dropdown .dropdown-item {
+        color: var(--bs-light);
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .profile-dropdown .dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+    }
+
+    .profile-dropdown .dropdown-item i {
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .profile-dropdown .dropdown-item:hover i {
+        transform: scale(1.1);
+        color: var(--accent-color);
+    }
+
+    .profile-dropdown .dropdown-divider {
+        border-color: rgba(255, 255, 255, 0.1);
+        margin: 0.5rem 0;
+    }
+
+    .profile-dropdown .dropdown-item.text-danger {
+        color: #ff6b6b !important;
+    }
+
+    .profile-dropdown .dropdown-item.text-danger:hover {
+        background: rgba(255, 107, 107, 0.1);
+    }
+
+    /* Mobile Menu Items */
+    .navbar-nav .nav-item {
+        margin: 0.25rem 0;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 1rem 1.25rem;
+        color: var(--bs-light) !important;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .navbar-nav .nav-link i {
+        font-size: 1.25rem;
+        width: 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+    }
+
+    .navbar-nav .nav-link:hover i {
+        transform: scale(1.1) rotate(5deg);
+        color: var(--accent-color) !important;
+    }
+
+    .navbar-nav .nav-link.active {
+        background: var(--accent-color);
+        color: var(--dark-color) !important;
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Mobile Search Bar */
+    .navbar-search {
+        margin: 1rem 0 !important;
+    }
+
+    .navbar-search .search-input {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0.75rem 1rem 0.75rem 2.5rem !important;
+        height: 45px;
+        font-size: 1rem;
+        border-radius: 12px !important;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-search .search-input:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        transform: translateY(-2px);
+    }
+
+    /* Notification Badge in Navbar */
+    .navbar .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: var(--accent-color);
+        color: var(--dark-color);
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        border: 2px solid var(--primary-color);
+        animation: badgePulse 2s infinite;
+    }
+
+    @keyframes badgePulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1029;
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+    }
+
+    .navbar-collapse.show+.mobile-menu-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .navbar-collapse {
+        width: 280px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .profile-header img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-info h6 {
+        font-size: 0.9rem;
+    }
+
+    .profile-info small {
+        font-size: 0.75rem;
+    }
+}
+
+/* Efek Hover untuk Kartu Statistik yang Dapat Diklik */
+.stat-card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ==========================================================================
+   BREADCRUMB STYLES
+   ========================================================================== */
+.breadcrumb-wrapper {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--secondary-color);
+}
+
+.breadcrumb-item.active {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   PAGE HEADER & DESCRIPTION STYLES
+   ========================================================================== */
+.page-header {
+    background: linear-gradient(135deg, 
+        rgba(79, 111, 82, 0.15) 0%,
+        rgba(115, 144, 114, 0.12) 25%,
+        rgba(79, 111, 82, 0.08) 50%,
+        rgba(115, 144, 114, 0.12) 75%,
+        rgba(79, 111, 82, 0.15) 100%
+    );
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(79, 111, 82, 0.2);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(79, 111, 82, 0.08);
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zM22.344 0L13.858 8.485 15.272 9.9l7.9-7.9h-.828zm5.656 0L19.515 8.485 20.93 9.9l8.485-8.485h-1.415zM33.657 0L25.172 8.485 26.586 9.9l8.485-8.485h-1.414zM39.314 0L30.828 8.485 32.243 9.9l8.485-8.485h-1.414zM45.172 0L36.687 8.485 38.1 9.9l8.485-8.485h-1.414zM51.03 0L42.545 8.485 43.96 9.9l8.485-8.485h-1.414zM56.485 0L48 8.485 49.414 9.9l8.485-8.485h-1.414zM60 0L51.515 8.485 52.93 9.9l8.485-8.485h-1.414zM60 5.373L54.627 0h-2.828L60 8.2V5.373zM60 11.03L53.657 4.686h-2.828L60 13.857V11.03zm0 5.656L53.657 10.343h-2.828L60 19.515v-2.828zm0 5.657L53.657 16h-2.828L60 25.172v-2.828zm0 5.657L53.657 21.657h-2.828L60 30.828v-2.828zm0 5.657L53.657 27.314h-2.828L60 36.485v-2.828zm0 5.657L53.657 32.97h-2.828L60 42.142v-2.828zm0 5.657L53.657 38.627h-2.828L60 47.8v-2.828zm0 5.657L53.657 44.284h-2.828L60 53.455v-2.828zm0 5.657L53.657 49.94h-2.828L60 59.112v-2.828zM54.627 60L60 54.627v-2.828L51.8 60h2.827zm-5.657 0L60 48.97v-2.828L46.143 60h2.827zm-5.657 0L60 43.314v-2.828L40.486 60h2.827zm-5.657 0L60 37.657v-2.828L34.83 60h2.827zm-5.657 0L60 32v-2.828L29.172 60h2.827zm-5.657 0L60 26.343v-2.828L23.515 60h2.827zm-5.657 0L60 20.686v-2.828L17.858 60h2.827zm-5.657 0L60 15.03v-2.828L12.2 60h2.827zm-5.657 0L60 9.373v-2.828L6.543 60h2.827zM0 60L8.485 51.515 7.07 50.1 0 57.172V60zm0-5.657L8.485 45.858 7.07 44.444 0 51.515v2.828zm0-5.657L8.485 40.2 7.07 38.787 0 45.858v2.828zm0-5.657L8.485 34.544 7.07 33.13 0 40.2v2.828zm0-5.657L8.485 28.887 7.07 27.473 0 34.544v2.828zm0-5.657L8.485 23.23 7.07 21.816 0 28.887v2.828zm0-5.657L8.485 17.573 7.07 16.16 0 23.23v2.828zm0-5.657L8.485 11.916 7.07 10.502 0 17.573v2.828zm0-5.657L8.485 6.26 7.07 4.845 0 11.916v2.828zM5.373 60L0 54.627v-2.828L8.2 60H5.374zm5.657 0L0 48.97v-2.828L13.857 60h-2.828zm5.657 0L0 43.314v-2.828L19.515 60h-2.828zm5.657 0L0 37.657v-2.828L25.172 60h-2.828zm5.657 0L0 32v-2.828L30.828 60h-2.828zm5.657 0L0 26.343v-2.828L36.485 60h-2.828zm5.657 0L0 20.686v-2.828L42.142 60h-2.828zM60 60L51.515 51.515 52.93 50.1 60 57.172V60z' fill='%234F6F52' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.7;
+    z-index: 0;
+}
+.page-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+.page-description {
+    font-family: 'Merriweather', serif;
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.page-description:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive styles untuk page header dan description */
+@media (max-width: 991px) {
+    .page-header {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+    }
+
+    .page-description {
+        font-size: 1rem;
+        padding: 0.875rem 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-description {
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
+        border-left-width: 2px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.25rem;
+    }
+
+    .page-description {
+        font-size: 0.9rem;
+        padding: 0.625rem 0.875rem;
+    }
+}
+
+/* Profile Circle Styles */
+.profile-circle {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bs-light);
+    transition: all 0.3s ease;
+}
+
+.profile-circle i {
+    font-size: 1.5rem;
+}
+
+/* Mobile Profile Section */
+.mobile-profile-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-header {
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-header .profile-circle {
+    width: 36px;
+    height: 36px;
+}
+
+.profile-header .profile-circle i {
+    font-size: 1.25rem;
+}
+
+.profile-info h6 {
+    color: var(--bs-light);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.profile-info small {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-dropdown {
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.profile-header.active+.profile-dropdown {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* JavaScript untuk toggle mobile profile dropdown */
+@media (max-width: 991px) {
+    .profile-header {
+        position: relative;
+    }
+
+    .profile-header::after {
+        content: '\F282';
+        font-family: 'bootstrap-icons';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-header.active::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+}
+
+/* Notification Styles */
+.notification-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bs-light);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+}
+
+.notification-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.notification-link i {
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.notification-link:hover i {
+    transform: scale(1.1) rotate(15deg);
+    color: var(--accent-color);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-color);
+    color: var(--dark-color);
+    font-size: 0.7rem;
+    font-weight: 600;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid var(--primary-color);
+    transform: translate(25%, -25%);
+    animation: notificationPulse 2s infinite;
+}
+
+@keyframes notificationPulse {
+    0% {
+        transform: translate(25%, -25%) scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    70% {
+        transform: translate(25%, -25%) scale(1.1);
+        box-shadow: 0 0 0 6px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        transform: translate(25%, -25%) scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* Tooltip Customization */
+.tooltip {
+    --bs-tooltip-bg: var(--primary-color);
+    --bs-tooltip-color: var(--bs-light);
+    --bs-tooltip-opacity: 0.9;
+}
+
+.tooltip .tooltip-inner {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .notification-link {
+        width: 36px;
+        height: 36px;
+    }
+
+    .notification-link i {
+        font-size: 1.1rem;
+    }
+
+    .notification-badge {
+        font-size: 0.65rem;
+        min-width: 16px;
+        height: 16px;
+        border-width: 1.5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .notification-link {
+        width: 32px;
+        height: 32px;
+    }
+
+    .notification-link i {
+        font-size: 1rem;
+    }
+
+    .notification-badge {
+        font-size: 0.6rem;
+        min-width: 15px;
+        height: 15px;
+    }
+}
+
+/* ==========================================================================
+   BADGE & STATUS STYLES
+   Digunakan di: Semua halaman admin (dashboard, akun, buku, dll)
+   ========================================================================== */
+.badge-status {
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge-status.active {
+    background-color: var(--success-color);
+    color: var(--dark-color);
+}
+
+.badge-status.inactive {
+    background-color: var(--danger-color);
+    color: var(--bs-light);
+}
+
+.badge-status.pending {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.badge-status i {
+    font-size: 0.875rem;
+}
+
+/* Status untuk buku */
+.badge-status.available {
+    background-color: var(--success-color);
+    color: var(--dark-color);
+}
+
+.badge-status.borrowed {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.badge-status.lost {
+    background-color: var(--danger-color);
+    color: var(--bs-light);
+}
+
+/* Status untuk akun */
+.badge-status.admin {
+    background-color: var(--primary-color);
+    color: var(--bs-light);
+}
+
+.badge-status.petugas {
+    background-color: var(--info-color);
+    color: var(--bs-light);
+}
+
+.badge-status.siswa {
+    background-color: var(--secondary-color);
+    color: var(--bs-light);
+}
+
+/* Status untuk peminjaman */
+.badge-status.dipinjam {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.badge-status.dikembalikan {
+    background-color: var(--success-color);
+    color: var(--dark-color);
+}
+
+.badge-status.terlambat {
+    background-color: var(--danger-color);
+    color: var(--bs-light);
+}
+
+/* ==========================================================================
+   DASHBOARD ANIMATIONS
+   ========================================================================== */
+
+/* Dashboard Stats Card Animation */
+@keyframes statsCardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    animation: statsCardAppear 0.5s ease-out forwards;
+    animation-delay: calc(var(--card-index, 0) * 0.1s);
+    opacity: 0;
+}
+
+/* Dashboard Chart Animation */
+@keyframes chartGrow {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.chart-container {
+    animation: chartGrow 0.8s ease-out forwards;
+    transform-origin: bottom;
+}
+
+/* Recent Activity Animation */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.recent-activity-header {
+    animation: slideInRight 0.5s ease-out;
+}
+
+/* Table Row Animation */
+@keyframes tableRowAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.table-sm tbody tr {
+    animation: tableRowAppear 0.3s ease-out forwards;
+    animation-delay: calc(var(--row-index, 0) * 0.1s);
+    opacity: 0;
+}
+
+/* Dashboard Icon Animation */
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.stat-card .bi {
+    animation: iconPulse 2s infinite;
+}
+
+/* Dashboard Number Counter Animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card h2 {
+    animation: countUp 0.5s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+/* Dashboard Card Hover Effects */
+.stat-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover .bi {
+    animation: iconPulse 1s infinite;
+}
+
+/* Dashboard Badge Animation */
+@keyframes badgePop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.badge-status {
+    animation: badgePop 0.5s ease-out forwards;
+}
+
+/* Dashboard Loading Animation */
+@keyframes dashboardLoading {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-loading {
+    animation: dashboardLoading 0.5s ease-out;
+}
+
+/* Dashboard Section Transitions */
+.dashboard-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+.dashboard-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dashboard Card Grid Animation */
+@keyframes cardGridAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.row.g-3 {
+    animation: cardGridAppear 0.5s ease-out forwards;
+}
+
+/* Dashboard Interactive Elements */
+.btn-gold {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-gold:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+}
+
+/* Dashboard Page Header Animation */
+.page-header {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Dashboard Breadcrumb Animation */
+.breadcrumb-item {
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-item:hover {
+    transform: translateX(3px);
+}
+
+/* Dashboard Table Animation */
+.table-responsive {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Dashboard Alert Animation */
+.alert {
+    animation: slideInRight 0.3s ease-out;
+}
+
+/* Dashboard Mobile Responsive Animations */
+@media (max-width: 768px) {
+    .stat-card {
+        animation-delay: calc(var(--card-index, 0) * 0.05s);
+    }
+    
+    .table-sm tbody tr {
+        animation-delay: calc(var(--row-index, 0) * 0.05s);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* Dashboard Loading State */
+.dashboard-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dashboard-loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(0.89);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Rotate Animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Flip Animation */
+@keyframes flip {
+    0% {
+        transform: perspective(400px) rotateY(0);
+        animation-timing-function: ease-out;
+    }
+    40% {
+        transform: perspective(400px) translateZ(150px) rotateY(170deg);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+        animation-timing-function: ease-in;
+    }
+    80% {
+        transform: perspective(400px) rotateY(360deg) scale(0.95);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: perspective(400px) rotateY(360deg) scale(1);
+        animation-timing-function: ease-in;
+    }
+}
+
+/* Hover Effects */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-rotate {
+    transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+    transform: rotate(5deg);
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Transition Classes */
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Animation Utilities */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+}
+
+.animate-bounce-in {
+    animation: bounceIn 0.5s ease-out;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 1s infinite;
+}
+
+.animate-rotate {
+    animation: rotate 1s linear infinite;
+}
+
+.animate-flip {
+    animation: flip 1s ease-out;
+}
+
+/* Responsive Animation Adjustments */
+@media (max-width: 768px) {
+    .animate-fade-in,
+    .animate-slide-in,
+    .animate-scale-in,
+    .animate-bounce-in {
+        animation-duration: 0.3s;
+    }
+    
+    .hover-lift:hover,
+    .hover-scale:hover,
+    .hover-rotate:hover {
+        transform: none;
+    }
+}
+
+/* ==========================================================================
+   FOOTER STYLES
+   Digunakan di: Semua halaman admin
+   ========================================================================== */
+.footer-custom {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+    color: var(--light-color);
+    padding: 3rem 0 1rem;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.footer-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.3), transparent);
+}
+
+.footer-custom::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--bs-primary), var(--bs-gold), var(--bs-primary));
+    opacity: 0.5;
+}
+
+.footer-custom h4 {
+    color: var(--light-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.footer-custom h4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--bs-gold);
+}
+
+.footer-custom p {
+    color: var(--light-color);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    color: var(--light-color);
+    opacity: 0.8;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-custom {
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-custom h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-custom p {
+        font-size: 0.85rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        padding-top: 1rem;
+        margin-top: 1.5rem;
+    }
+}
